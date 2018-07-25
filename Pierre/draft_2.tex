@@ -1,0 +1,281 @@
+
+\documentclass[11pt]{article}
+\def\baselinestretch{1}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{amsmath,amsthm,amsfonts,epsfig,setspace}
+\numberwithin{equation}{section}
+
+\usepackage{multicol}
+\usepackage{stmaryrd}
+\usepackage{pgf}
+\usepackage{pgffor}
+\usepgflibrary{plothandlers}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+ \pgfplotsset{width=15cm}
+\pgfplotsset{plot coordinates/math parser=false}
+\newlength\figureheight
+\newlength\figurewidth
+
+
+
+\newcommand{\ds}{\displaystyle}
+\def\nm{\noalign{\medskip}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{example}{Example}
+\newtheorem{cond}{Condition}
+\setlength\topmargin{-1cm} \setlength\textheight{220mm}
+\setlength\oddsidemargin{0mm}
+\setlength\evensidemargin\oddsidemargin \setlength\textwidth{160mm}
+\setlength\baselineskip{18pt}
+
+%\usepackage{showkeys}
+
+\def\no{\noindent} \def\dr{\partial}
+\def \Vh0{\stackrel{\circ}{V}_h} \def\to{\rightarrow}
+\def\cl{\centerline}   \def\ul{\underline}
+
+
+%\def\D{\%end{document}}
+
+\def\b{\beta}  \def\a{\alpha} \def\eps{\varepsilon}
+\def\G{\Gamma}
+\def\K{\texttt{K}}
+\def\e{\eta}
+\def\m{\mbox} \def\t{\times}  \def\lam{\lambda}
+\def\ms{\medskip} \def\bs{\bigskip} \def\ss{\smallskip}
+%\def\Box{\sharp}
+\def\Box{\square}
+\def\l|{\left|}
+\def\r|{\right|}
+
+\def\restriction#1#2{\mathchoice
+              {\setbox1\hbox{${\displaystyle #1}_{\scriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\textstyle #1}_{\scriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\scriptstyle #1}_{\scriptscriptstyle #2}$}
+              \restrictionaux{#1}{#2}}
+              {\setbox1\hbox{${\scriptscriptstyle #1}_{\scriptscriptstyle #2}$}
+              \restrictionaux{#1}{#2}}}
+\def\restrictionaux#1#2{{ #1 \smash{\vrule height 1.1\ht1 depth .95\dp1}}_{\,#2}}
+
+
+
+
+\newcommand{\cqfd}{\hfill $\square$\\ \medskip}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+\newcommand{\nubf}{\boldsymbol{\nu}}
+\newcommand{\phibf}{\boldsymbol{\varphi}}
+
+\newcommand{\fbf}{\mathbf{f}}
+\newcommand{\wbf}{\mathbf{w}}
+\newcommand{\xbf}{\mathbf{x}}
+\newcommand{\vbf}{\mathbf{v}}
+\newcommand{\ebf}{\mathbf{e}}
+\newcommand{\gbf}{\mathbf{g}}
+
+\newcommand{\dbf}{\mathbf{d}}
+\newcommand{\ybf}{\mathbf{y}}
+\newcommand{\kbf}{\mathbf{k}}
+\newcommand{\Lbf}{\mathbf{L}}
+\newcommand{\Ubf}{\mathbf{U}}
+\newcommand{\Ibf}{\mathbf{I}}
+\newcommand{\Wbf}{\mathbf{W}}
+\newcommand{\Xbf}{\mathbf{X}}
+\newcommand{\Ebf}{\mathbf{E}}
+
+
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\tin}{\text{ in }}
+\newcommand{\ton}{\text{ on }}
+\newcommand{\tif}{\text{ if }}
+
+
+\definecolor{tagada}{RGB}{235,23,55} 
+\definecolor{vertperso}{RGB}{0,125,0} 
+
+\title{Modal analysis of resonant dielectric nano-structures}
+
+
+
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+\begin{equation}
+\label{eq:transverse} 
+ \left\{
+\begin{array} {ll}
+&\ds\Delta u+ \omega^2 (1+n(x)) u  = 0 \quad \mbox{in } \R^2 \backslash \partial D, \\
+\nm
+&  u^s:= u- u^{i}  \,\,\,  \mbox{satisfies the Sommerfeld radiation condition}.
+  \end{array}
+ \right.
+\end{equation}
+with
+\begin{align}
+n(x)= \eta\chi(\bar{D}).
+\end{align}
+
+
+\subsection{Integral formulation}
+
+Denote by $\Gamma^\omega$ the Green's function associated with Helmholtz' equation in the free space in the medium:
+\begin{align*}
+\left( \Delta +\omega^2\right) \Gamma(x,y)= \delta_y(x),\qquad (x,y)\in \R^d\times \R^d
+\end{align*}
+
+\begin{proposition}{Lippman-Schwinger equation}
+
+\begin{align*}
+u-u^i(x) = -\omega^2\eta \int_D u(y) \Gamma^\omega(x,y) \dd y
+\end{align*}
+\end{proposition}
+
+\begin{definition}
+\begin{align*}
+\mathcal{K} \begin{aligned} L^2(D)& \longrightarrow L^2(D) \\
+f &\longmapsto - \int_D f(y) \Gamma^\omega (\cdot,y) \cdot  \dd y
+\end{aligned}
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+\begin{align}\label{eq:lippman}
+\left( I-\omega^2 \eta \mathcal{K}\right)\left[ u\big\vert_D\right] = u^i \qquad \tin D
+\end{align}
+\end{proposition}
+\subsection{Spectral analysis of $\mathcal{K}_D$}
+
+The following lemmas are from \cite{ammari2015super}. 
+
+
+\begin{lemma}
+The operator $\mathcal{K}$ is compact from $L^2(D)$ to $L^2(D)$. In fact, $\mathcal{K}$ is bounded from $L^2(D)$ to $H^2(D)$. Moreover, $\mathcal{K}$ is a Hilbert-Schmidt operator.
+\end{lemma}
+
+\begin{lemma}
+Let $\sigma(\mathcal{K})$ be the spectrum of $\mathcal{K}$:
+\begin{enumerate}
+\item $\sigma(\mathcal{K}) =\{0,\lambda_1,\ldots,\lambda_n,\ldots\}$ where $\vert \lambda_1\vert \geq \vert \lambda_2\vert \geq \cdots$ and $\lambda_n\rightarrow 0$.
+\item $\sigma(\mathcal{K})\setminus\sigma_p(\mathcal{K})=\{0\}$, $\sigma_p$ being the point spectrum of $\mathcal{K}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}Let $H_j$ denote the generalized eigenspaces of the operator $\mathcal{K}$. Then the following decomposition holds
+\begin{align*}
+L^2(D)= \overline{\mathop{\bigcup}_{j=1}^\infty H_j}
+\end{align*}
+\end{lemma}
+
+\begin{lemma}There exists a basis $\{u_j,l,k\}$, $1\leq l \leq m_j$, $1\leq k \leq n_{j,l}$ for $H_j$ such that 
+\begin{align*}
+\mathcal{K}[u_{j,l,k}]= \lambda_j u_{j,l,k }+u_{j,l,k-1} \quad \text{for \ all\ } j,l,k \quad (u_{j,l,k}=0 \text{\ for \ } k\leq 0).
+\end{align*}
+$m_j$ is the geometric multiplicity of $\lambda_j$, given by the dimension of $N(\lambda_j I - \mathcal{K})$ and $\sum_l n_{j,l}= N_j$ is the algebraic multiplicity of $\lambda_j$.
+In $H_j$, in the basis $\{u_j,l,k\}$, $\mathcal{K}$ has the Jordan block representation:
+\begin{align*}
+K_D= \begin{pmatrix}
+J_{j,1} & \ &\ \\
+ & \ddots & \\
+ &  & J_{j,m_j} 
+\end{pmatrix} \qquad \text{with } \quad J_{j,l}= \begin{pmatrix}
+\lambda_j & 1 & & \\
+ & \ddots & \ddots & \\
+ &         &  \lambda_j & 1 \\
+ &          &           & \lambda_j
+\end{pmatrix}
+\end{align*}
+
+ \end{lemma}
+ 
+\subsection{Non Normality, Exceptional points}
+The operator $\mathcal{K}$ is not normal in $L^2(D)$.
+This can have two consequences:
+\begin{itemize}
+\item the existence of generalized eigenspaces that are not eigenspaces (degenerate eigenvalues $\lambda_j$ such that  $n_{j,l}\geq 2$ for some $1\leq l \leq m_j$)
+\item the lack of orthogonality between generalized eigenspaces
+\end{itemize}
+
+\begin{remark}
+In the first situation we are in presence of an \emph{exceptional point}. This is a particular situation, that happens only for specific values of $\omega$. This situation is not stable under a small perturbation of the frequency. Therefore, at first we will assume that there are no exceptional points. This specific case will be studied later.
+\end{remark}
+
+\begin{conjecture}
+The set of $\omega$ such that $\mathcal{K}$ has an exceptional point is discrete.
+\end{conjecture}
+
+\begin{conjecture}
+Exceptional points are of order $2$ or $4$ ?
+\end{conjecture}
+
+
+
+
+\section{Modal decomposition in the non exceptional case}
+
+In this section, we make the following assumption:
+\begin{assumption}
+$\omega$ is such that $K$ has no exceptional eigenvalues, i.e. $n_{j,l}=1$ for every $j\in \N, 1\leq l \leq m_j$.
+\end{assumption}
+
+Denote $\Gamma := \{(j,l,k)\in \mathbb{N}^3,1\leq l \leq m_j$, $1\leq k \leq n_{j,l} \}$ the set of indices for the basis functions. Equip $\Gamma$ with the lexicographical order $\preceq$.
+\begin{lemma}There exists an orthonormal basis $\{e_\gamma : \gamma \in \Gamma\}$ for $L^2(D)$ such that 
+\begin{align*}
+e_\gamma=\sum_{\gamma'\preceq \gamma} a_{\gamma,\gamma'} u_{\gamma'}
+\end{align*}
+\end{lemma}
+
+\subsection{Modal expansion, resonance condition}
+
+\begin{proposition}\label{prop:expansion}
+\begin{align*}
+u\big\vert_D (x) = \frac{1}{\tau \omega^2 \varepsilon_c} \sum_{\gamma \in \Gamma} \frac{1}{\frac{1}{\tau \varepsilon_c }-\omega^2 \lambda_j(\omega)}e_\gamma^i u_\gamma(x)
+\end{align*}
+with $e_\gamma^i = \int_D u^i(x) e_\gamma(x) \dd x$
+\end{proposition}
+
+\section{Temporal modal analysis}
+
+Time dependent model, transverse electric case:
+\begin{align*}
+\varepsilon_D(x) \partial_t^2 u(x,t)-\Delta u(x,t) = 0
+\end{align*}
+with
+\begin{align*}
+u(x,t)=& u^s(x,t) +u^i(x,t) \\
+u^i(x,t) =& \frac{1}{2\pi }\int_\R e^{-i\omega t} u^i(x,\omega) \dd \omega
+\end{align*}
+
+Using proposition  \ref{prop:expansion} we have:
+\begin{align*}
+u(x,t)= \frac{1}{2\pi }\int_\R e^{-i\omega t} \sum_\gamma e_\gamma^i (\omega) \left( I-\tau\varepsilon_c\omega^2 K_D(\omega)\right)[e_\gamma(\omega) ]\dd \omega
+\end{align*}
+
+this is a test
+
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
